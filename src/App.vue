@@ -1,17 +1,33 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<div>
+  <p> i like mcdonald big mac</p>
+
+</div>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import Header from './components/Header.vue';
+// import PhotoContainer from './components/PhotoContainer.vue';
+// import Inputcontainer from './components/Inputcontainer.vue';
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+
+ 
+  methods :{
+
+  },
+   components :{
+    // Header : Header,
+    // PhotoContainer : PhotoContainer,
+    // Inputcontainer : Inputcontainer,
+  },
+  mounted: {
+    // getRandomIntInclusive(0,163);
+  },
 }
+  
 </script>
 
 <style>
@@ -24,3 +40,4 @@ export default {
   margin-top: 60px;
 }
 </style>
+<style src="./assets/main.css"></style>
