@@ -68,7 +68,7 @@ export default {
   methods:{
     changeImage(){
       this.currentChampIndex = Math.floor(Math.random() * this.championInfo.length);
-       this.currentChampName = this.championInfo[this.currentChampIndex].name;
+      this.currentChampName = this.championInfo[this.currentChampIndex].name;
     }
   }
 };
