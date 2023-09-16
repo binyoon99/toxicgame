@@ -1,34 +1,16 @@
+<script setup>
+  import Header from './components/Header.vue'
+  import PhotoContainer from './components/PhotoContainer.vue'
+  import InputContainer from './components/InputContainer.vue';
+</script>
 <template>
-<div>
-  <p> i like mcdonald big mac</p>
-
-</div>
+<main>
+  <Header></Header>
+  <PhotoContainer />
+  <InputContainer />
+</main>
 
 </template>
-
-<script>
-// import Header from './components/Header.vue';
-// import PhotoContainer from './components/PhotoContainer.vue';
-// import Inputcontainer from './components/Inputcontainer.vue';
-
-export default {
-  name: 'App',
-
- 
-  methods :{
-
-  },
-   components :{
-    // Header : Header,
-    // PhotoContainer : PhotoContainer,
-    // Inputcontainer : Inputcontainer,
-  },
-  mounted: {
-    // getRandomIntInclusive(0,163);
-  },
-}
-  
-</script>
 
 <style>
 #app {
