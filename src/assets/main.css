@@ -38,7 +38,7 @@ body {
 
 .container {
     text-align: center;
-    background-color: #fff;
+    background-image: url('./oldCat.jpg');
     color: #333;
     padding: 20px;
     border-radius: 10px;
@@ -70,8 +70,10 @@ align-items: center; /* Center horizontally */
     image-rendering: -webkit-optimize-contrast;
 }
 .black-background {
+    background-image: url('./chadDoge.png');
+    background-size: 100%;
     display : block;
-position: absolute;
+    position: absolute;
   top: 0;
   left: 0;
   width: 100%;

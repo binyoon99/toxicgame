@@ -1,13 +1,13 @@
 <script setup>
   import Header from './components/Header.vue'
   import PhotoContainer from './components/PhotoContainer.vue'
+
 </script>
 <template>
 <main>
-  <div id="mainContainer">
   <Header></Header>
   <PhotoContainer />
-  </div>
+
 </main>
 
 </template>

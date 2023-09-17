@@ -15,11 +15,14 @@
     </div>
     <button @click="changeImage">Skip</button>
     <!-- <img :src="`${championNames[0]}`" alt="League of Legends Champion" class="champion-image"> -->
+    <div style="color: white;
+    background-color: #808080; width: 50%; margin: 0 auto; border-radius: 10px; position: center;">
     <p>Enter the name of the champion:</p>
     <p>
       You have <span style="color: red">{{ chances }}</span> to guess it
       correctly
     </p>
+    </div>
   </div>
   <InputContainer
     :blackBoxPercentage="blackBoxPercentage"
