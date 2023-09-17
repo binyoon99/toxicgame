@@ -8,17 +8,31 @@
         alt="League of Legends Champion"
         class="champion-image"
       />
-      <div class="black-background"></div>
+      <div
+        class="black-background"
+        :style="`height: ${blackBoxPercentage}%`"
+      ></div>
     </div>
-    <button @click="changeImage"> Testing </button>
+    <button @click="changeImage">Skip</button>
     <!-- <img :src="`${championNames[0]}`" alt="League of Legends Champion" class="champion-image"> -->
     <p>Enter the name of the champion:</p>
-    <p>You have {{ chances }} to guess it correctly</p>
+    <p>
+      You have <span style="color: red">{{ chances }}</span> to guess it
+      correctly
+    </p>
   </div>
+  <InputContainer
+    :blackBoxPercentage="blackBoxPercentage"
+    @changeblackBoxPercentage="blackBoxPercentage = $event"
+    @chancesDumbe="chances = $event"
+    :chances="chances"
+    :currentChampName="currentChampName"
+  />
 </template>
 
 <script>
 import axios from "axios";
+import InputContainer from "./InputContainer.vue";
 
 export default {
   name: "PhotoContainer",
@@ -26,51 +40,61 @@ export default {
     return {
       chances: 4,
       championInfo: [],
-      currentChampName: "",
-      currentChampIndex : 0,
-
+      currentChampName: "Aatrox",
+      currentChampIndex: 0,
+      blackBoxPercentage: 90,
     };
   },
-  props:{
- 
+  props: {},
+  components: {
+    InputContainer: InputContainer,
   },
-  mounted() {
-     axios
-        .get(
-          "http://ddragon.leagueoflegends.com/cdn/11.11.1/data/en_US/champion.json"
-        )
-        .then((res) => {
-          console.log("first" + res.data.data.Aatrox.name);
-          const datas = res.data;
-          let i = 0;
-          let name = "";
-          let id = 0;
-          let splashArtUrl = "";
-          // Champion Name parsing
-          for (const data in datas.data) {
-            name = data; //sneaky
-            id = i;
-            splashArtUrl = `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${name}_0.jpg`;
-            i++;
-            var championList = {
-              id: id,
-              champName: name,
-              url: splashArtUrl,
-            };
-            this.championInfo.push(championList);
-          }
-          console.log("Sibal "+this.championInfo[0].id);
-        })
-        .catch((err) => {
-          console.log("u r stupid u have error" + err);
-        });
+  mounted() {},
+  created() {
+    axios
+      .get(
+        "http://ddragon.leagueoflegends.com/cdn/11.11.1/data/en_US/champion.json"
+      )
+      .then((res) => {
+        console.log("first" + res.data.data.Aatrox.name);
+        const datas = res.data;
+        let i = 0;
+        let name = "";
+        let id = 0;
+        let splashArtUrl = "";
+        // Champion Name parsing
+        for (const data in datas.data) {
+          name = data; //sneaky
+          id = i;
+          splashArtUrl = `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${name}_0.jpg`;
+          i++;
+          var championList = {
+            id: id,
+            champName: name,
+            url: splashArtUrl,
+          };
+          this.championInfo.push(championList);
+        }
+        console.log("Sibal " + this.championInfo[0].id);
+        this.currentChampIndex = Math.floor(
+          Math.random() * this.championInfo.length
+        );
+        this.currentChampName =
+          this.championInfo[this.currentChampIndex].champName;
+      })
+      .catch((err) => {
+        console.log("u r stupid u have error" + err);
+      });
   },
-  methods:{
-    changeImage(){
-      this.currentChampIndex = Math.floor(Math.random() * this.championInfo.length);
-      this.currentChampName = this.championInfo[this.currentChampIndex].name;
-    }
-  }
+  methods: {
+    changeImage() {
+      this.currentChampIndex = Math.floor(
+        Math.random() * this.championInfo.length
+      );
+      this.currentChampName =
+        this.championInfo[this.currentChampIndex].champName;
+    },
+  },
 };
 </script>
 

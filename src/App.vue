@@ -1,13 +1,13 @@
 <script setup>
   import Header from './components/Header.vue'
   import PhotoContainer from './components/PhotoContainer.vue'
-  import InputContainer from './components/InputContainer.vue';
 </script>
 <template>
 <main>
+  <div id="mainContainer">
   <Header></Header>
   <PhotoContainer />
-  <InputContainer />
+  </div>
 </main>
 
 </template>
