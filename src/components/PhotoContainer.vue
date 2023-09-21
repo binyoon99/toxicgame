@@ -13,7 +13,8 @@
         :style="`height: ${blackBoxPercentage}%`"
       ></div>
     </div>
-    <button @click="changeImage">Skip</button>
+    <button v-if="hasPlayedLast24hours == false" @click="changeImage"  class="submit-button" >Skip</button>
+     <button v-else  class="submit-button" style="opacity: 0.7"> You already played</button>
     <!-- <img :src="`${championNames[0]}`" alt="League of Legends Champion" class="champion-image"> -->
     <div style="color: white;
     background-color: #808080; width: 50%; margin: 0 auto; border-radius: 10px; position: center;">
@@ -30,6 +31,7 @@
     @chancesDumbe="chances = $event"
     :chances="chances"
     :currentChampName="currentChampName"
+    :hasPlayedLast24hours="hasPlayedLast24hours"
   />
 </template>
 
@@ -46,9 +48,12 @@ export default {
       currentChampName: "Aatrox",
       currentChampIndex: 0,
       blackBoxPercentage: 90,
+
     };
   },
-  props: {},
+  props: {
+    hasPlayedLast24hours: Boolean
+  },
   components: {
     InputContainer: InputContainer,
   },
@@ -96,10 +101,8 @@ export default {
       );
       this.currentChampName =
         this.championInfo[this.currentChampIndex].champName;
+         location. reload(); 
     },
   },
 };
 </script>
-
-<style>
-</style>
